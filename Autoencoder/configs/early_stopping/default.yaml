@@ -1,0 +1,10 @@
+monitor: valid/loss
+patience: 10000
+mode: min
+min_delta: 0.
+verbose: False
+strict: True
+check_finite: True
+stopping_threshold: Null
+divergence_threshold: Null
+check_on_train_epoch_end: Null

@@ -1,0 +1,16 @@
+# @package _global_
+
+# Default configurations
+defaults:
+  - _self_
+  - checkpoints: default
+  - dataset: dentategyrus 
+  - early_stopping: default
+  - encoder: default
+  - hparams_search: null
+  - hydra: default
+  - launcher: slurm_tum
+  - logger: default
+  - trainer: default
+  - training_config: default
+  

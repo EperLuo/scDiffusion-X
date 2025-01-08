@@ -1,0 +1,5 @@
+run:
+  dir: project_folder/celldreamer/run_files/${now:%Y-%m-%d}_${now:%H-%M-%S}
+sweep:
+  dir: project_folder/celldreamer/multiruns/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  

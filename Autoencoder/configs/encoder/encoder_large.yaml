@@ -1,0 +1,10 @@
+encoder_kwargs:
+  dims: [512, 256, 100]
+  batch_norm: True
+  dropout: False 
+  dropout_p: 0.0
+learning_rate: 0.001
+weight_decay: 0.00001
+covariate_specific_theta: False 
+multimodal: False
+is_binarized: False

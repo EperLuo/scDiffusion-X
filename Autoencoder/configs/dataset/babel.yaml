@@ -1,0 +1,12 @@
+dataset_path: /stor/lep/data/BABEL/train.h5mu
+valid_path: /stor/lep/data/BABEL/valid.h5mu
+layer_key: X_counts
+covariate_keys: [leiden]
+conditioning_covariate: leiden
+theta_covariate: leiden
+subsample_frac: 1
+one_hot_encode_features: False
+split_rates: [0.90, 0.10]
+cov_embedding_dimensions: 100
+multimodal: True
+is_binarized: True 
