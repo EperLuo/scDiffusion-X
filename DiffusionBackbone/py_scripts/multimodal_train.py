@@ -5,7 +5,7 @@ import sys,os
 sys.path.append(os.path.dirname (os.path.dirname (os.path.abspath (__file__))))
 import argparse
 from mm_diffusion import dist_util, logger
-from mm_diffusion.multimodal_datasets import load_data, load_data_cell
+from mm_diffusion.multimodal_datasets import load_data_cell
 from mm_diffusion.resample import create_named_schedule_sampler
 from mm_diffusion.multimodal_script_util import (
     model_and_diffusion_defaults,

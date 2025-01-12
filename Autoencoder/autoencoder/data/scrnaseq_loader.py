@@ -39,9 +39,9 @@ class RNAseqLoader:
         
         # Read adata
         if not self.multimodal:
-            adata = sc.read(data_path)
+            adata = sc.read(str(data_path))
         else:
-            adata_mu = mu.read(data_path)
+            adata_mu = mu.read(str(data_path))
             self.modality_list = list(adata_mu.mod.keys())  # "rna" and "atac"
             adata = {}
             for mod in self.modality_list:

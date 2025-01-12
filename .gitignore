@@ -7,16 +7,17 @@ DiffusionBackbone/outputs
 
 
 # Experiments output
-DiffusionBackbone/evaluate_script/bigwig_atac/*
-DiffusionBackbone/evaluate_script/go_enrich/*
-DiffusionBackbone/evaluate_script/eval_results/*
-DiffusionBackbone/evaluate_script/hichip/bed_files
+evaluate_script/bigwig_atac/*
+evaluate_script/go_enrich/*
+evaluate_script/eval_results/*
+evaluate_script/hichip/bed_files
 
 # Other
 __pycache__/
-# DiffusionBackbone/evaluate_script/hg38/hg38.fa*
-# DiffusionBackbone/evaluate_script/hg38/hg38.refGene*
-# DiffusionBackbone/evaluate_script/hg38/gencode.v47.chr_patch_hapl_scaff.annotation.gtf
-DiffusionBackbone/evaluate_script/hg38/*
-DiffusionBackbone/evaluate_script/hichip/*
-DiffusionBackbone/evaluate_script/scib
+# evaluate_script/hg38/hg38.fa*
+# evaluate_script/hg38/hg38.refGene*
+# evaluate_script/hg38/gencode.v47.chr_patch_hapl_scaff.annotation.gtf
+evaluate_script/hg38/*
+evaluate_script/hichip/*
+evaluate_script/scib
+.vscode/
