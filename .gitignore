@@ -12,6 +12,12 @@ evaluate_script/go_enrich/*
 evaluate_script/eval_results/*
 evaluate_script/hichip/bed_files
 
+# Read the doc
+build/
+# source/
+make.bat
+Makefile
+
 # Other
 __pycache__/
 # evaluate_script/hg38/hg38.fa*

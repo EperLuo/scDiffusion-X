@@ -1,5 +1,4 @@
-## scMulDiffusion: Diffusion Model for Single-Cell Multiome Data Generation and Analysis
-
+# A simple tutorial
 Welcome! This is the official implement of scMulDiffusion.
 
 TODO: introduction to scMulDiffusion
@@ -7,14 +6,6 @@ TODO: introduction to scMulDiffusion
 <div align="center">  
     <img src="FIG1.png" width="650">  
 </div>  
-
-# Installation
-```
-conda create --name scmuldiff --file requirements.txt python=3.8
-```
-TODO: Pipy package construction
-
-# User guidance
 
 **Step1: Train the Autoencoder**
 ```
