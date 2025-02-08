@@ -1,0 +1,12 @@
+dataset_path: /stor/lep/diffusion/multiome/openproblem_filtered.h5mu
+valid_path: null
+layer_key: X_counts # the layer which save the row count data. If dont have this, automatically use .X
+covariate_keys: [cell_type] # decide the size factor. Use leiden or other clustering method if there is no metainfomation
+conditioning_covariate: cell_type 
+theta_covariate: cell_type
+subsample_frac: 1
+one_hot_encode_features: False
+split_rates: [0.90, 0.10]   # training and test set size
+cov_embedding_dimensions: 100
+multimodal: True
+is_binarized: True   # if the atac data binarized

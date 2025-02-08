@@ -2,7 +2,7 @@
 
 Welcome! This is the official implement of scMulDiffusion.
 
-TODO: introduction to scMulDiffusion and the Read the doc
+TODO: introduction to scMulDiffusion
 <!-- ![image](FIG1.png) -->
 <div align="center">  
     <img src="FIG1.png" width="650">  

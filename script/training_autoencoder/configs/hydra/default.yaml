@@ -1,0 +1,5 @@
+run:
+  dir: outputs/logs/run_files/${now:%Y-%m-%d}_${now:%H-%M-%S}
+sweep:
+  dir: outputs/logs/multiruns/${now:%Y-%m-%d}_${now:%H-%M-%S}
+  

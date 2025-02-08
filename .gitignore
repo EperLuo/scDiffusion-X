@@ -1,29 +1,31 @@
 # AE checkpoint files
-Autoencoder/project_folder
+script/training_autoencoder/outputs/*
 
 
 # Diffusion checkpoint files and generated files
-DiffusionBackbone/outputs
+script/training_diffusion/outputs/checkpoints/*
+script/training_diffusion/outputs/sample/*
 
 
 # Experiments output
-evaluate_script/bigwig_atac/*
-evaluate_script/go_enrich/*
-evaluate_script/eval_results/*
-evaluate_script/hichip/bed_files
+evaluation_script/bigwig_atac/
+evaluation_script/go_enrich/
+evaluation_script/eval_results/
+evaluation_script/hichip/bed_files/
+evaluation_script/hichip/
+evaluation_script/logs/
 
 # Read the doc
 build/
-# source/
+source/
 make.bat
 Makefile
 
 # Other
 __pycache__/
-# evaluate_script/hg38/hg38.fa*
-# evaluate_script/hg38/hg38.refGene*
-# evaluate_script/hg38/gencode.v47.chr_patch_hapl_scaff.annotation.gtf
-evaluate_script/hg38/*
-evaluate_script/hichip/*
-evaluate_script/scib
+# evaluation_script/hg38/hg38.fa*
+# evaluation_script/hg38/hg38.refGene*
+# evaluation_script/hg38/gencode.v47.chr_patch_hapl_scaff.annotation.gtf
+evaluation_script/hg38/*
+evaluation_script/scib
 .vscode/

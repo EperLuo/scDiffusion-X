@@ -1,0 +1,19 @@
+encoder_kwargs:
+  rna:
+    dims: [300, 150, 64]
+    norm: True
+    norm_type: layernorm
+    dropout: False 
+    dropout_p: 0.0
+  atac:
+    dims: [512, 256, 64]
+    norm: True
+    norm_type: layernorm
+    dropout: False 
+    dropout_p: 0.0    
+learning_rate: 0.0005
+weight_decay: 0.0001
+covariate_specific_theta: False 
+multimodal: True
+is_binarized: True
+encoder_multimodal_joint_layers: null
