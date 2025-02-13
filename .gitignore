@@ -16,10 +16,7 @@ evaluation_script/hichip/
 evaluation_script/logs/
 
 # Read the doc
-build/
-source/
-make.bat
-Makefile
+docs/build/
 
 # Other
 __pycache__/
