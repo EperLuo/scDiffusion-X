@@ -1,8 +1,9 @@
 ## scMulDiffusion: Diffusion Model for Single-Cell Multiome Data Generation and Analysis
 
-Welcome! This is the official implement of scMulDiffusion.
+Welcome! This is the official implement of scMulDiffusion. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
 
-TODO: introduction to scMulDiffusion and the Read the doc
+Instruction (under construction): https://scmuldiffusion.readthedocs.io/en/latest/
+
 <!-- ![image](FIG1.png) -->
 <div align="center">  
     <img src="FIG1.png" width="650">  
