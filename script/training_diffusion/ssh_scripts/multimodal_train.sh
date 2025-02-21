@@ -3,9 +3,9 @@ MODEL_FLAGS="--cross_attention_resolutions 2,4,8 --cross_attention_windows 1,4,8
 --video_size 1,100 --audio_size 1,100 --learn_sigma False --num_channels 128
 --num_head_channels -1 --num_res_blocks 1 --resblock_updown True --use_fp16 False
 --use_scale_shift_norm True --num_workers 4 --condition cell_type
---encoder_config /stor/lep/workspace/scMulDiffusion/script/training_autoencoder/configs/encoder/encoder_multimodal.yaml
+--encoder_config /stor/lep/workspace/scDiffusion-X/script/training_autoencoder/configs/encoder/encoder_multimodal.yaml
 --num_class 22 --weight_decay 0.0001
---ae_path /stor/lep/workspace/scMulDiffusion/script/training_autoencoder/outputs/checkpoints/my_autoencoder2/checkpoints/last.ckpt
+--ae_path /stor/lep/workspace/scDiffusion-X/script/training_autoencoder/outputs/checkpoints/my_autoencoder2/checkpoints/last.ckpt
 "
 
 # Modify --devices to your own GPU ID
@@ -15,7 +15,7 @@ DIFFUSION_FLAGS="--noise_schedule linear --diffusion_steps 1000 --sample_fn dpm_
 
 # Modify the following pathes to your own paths
 DATA_DIR="/stor/lep/diffusion/multiome/openproblem_filtered.h5mu"
-OUTPUT_DIR="/stor/lep/workspace/scMulDiffusion/script/training_diffusion/outputs/checkpoints/my_dfbackbone"
+OUTPUT_DIR="/stor/lep/workspace/scDiffusion-X/script/training_diffusion/outputs/checkpoints/my_dfbackbone"
 NUM_GPUS=2
 WORLD_SIZE=1
 NCCL_P2P_DISABLE=1

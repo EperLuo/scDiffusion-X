@@ -1,8 +1,8 @@
-## scMulDiffusion: Diffusion Model for Single-Cell Multiome Data Generation and Analysis
+## scDiffusion-X: Diffusion Model for Single-Cell Multiome Data Generation and Analysis
 
-Welcome! This is the official implement of scMulDiffusion. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
+Welcome! This is the official implement of scDiffusion-X. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
 
-Instruction (under construction): https://scmuldiffusion.readthedocs.io/en/latest/
+Instruction (under construction): https://scdiffusionX.readthedocs.io/en/latest/
 
 <!-- ![image](FIG1.png) -->
 <div align="center">  
@@ -18,14 +18,14 @@ Use setup.py:
 
 First clone this repository into your local path. Then run:
 ```
-cd scMulDiffusion
+cd scDiffusion-X
 pip install -e .
 ```
 TODO: Pipy package construction -->
 ```
 conda create --name scmuldiff python=3.8
 pip install -r requirements.txt
-pip install scmuldiffusion
+pip install scdiffusionX
 conda install mpi4py
 ```
 

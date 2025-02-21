@@ -1,5 +1,5 @@
 # Quick start
-This is the simplified version of scmuldiffusion tutorials.
+This is the simplified version of scdiffusionX tutorials.
 
 
 **Step1: Train the Autoencoder**

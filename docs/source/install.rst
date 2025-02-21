@@ -3,13 +3,13 @@
 Installation
 =============
 
-We used conda to deploy the required environment for scMulDiffusion.
+We used conda to deploy the required environment for scDiffusion-X.
 ::
     conda create --name scmuldiff python=3.8
 
 Prerequisites
 -------------
-Before installing scMulDiffusion, users should first install Pytorch and other dependancies.
+Before installing scDiffusion-X, users should first install Pytorch and other dependancies.
 ::
     pip install -r requirements.txt
 
@@ -21,15 +21,15 @@ Then, users need to install mpi4py for distribute data parallel training. We rec
 PyPI
 ----
 
-scMulDiffusion is available on PyPI here_ and can be installed via::
+scDiffusion-X is available on PyPI here_ and can be installed via::
 
-    pip install scmuldiffusion
+    pip install scdiffusionX
 
 
 Source file
 ----
-Source file of model and scripts can be found in `github <https://github.com/EperLuo/scMulDiffusion/>`_
+Source file of model and scripts can be found in `github <https://github.com/EperLuo/scDiffusion-X/>`_
 
 
 
-.. _here: https://pypi.org/project/scmuldiffusion
+.. _here: https://pypi.org/project/scdiffusionX

@@ -11,16 +11,16 @@ import torch.distributed as dist
 from einops import rearrange, repeat
 import muon as mu
 
-from scmuldiffusion.DiffusionBackbone import dist_util, logger
-from scmuldiffusion.DiffusionBackbone.multimodal_script_util import (
+from scdiffusionX.DiffusionBackbone import dist_util, logger
+from scdiffusionX.DiffusionBackbone.multimodal_script_util import (
     model_and_diffusion_defaults,
     create_model_and_diffusion,
     add_dict_to_argparser,
     args_to_dict
 )
-from scmuldiffusion.DiffusionBackbone.common import set_seed_logger_random, delete_pkl
-from scmuldiffusion.DiffusionBackbone.multimodal_dpm_solver_plus import DPM_Solver as multimodal_DPM_Solver
-from scmuldiffusion.DiffusionBackbone.dpm_solver_plus import DPM_Solver as singlemodal_DPM_Solver
+from scdiffusionX.DiffusionBackbone.common import set_seed_logger_random, delete_pkl
+from scdiffusionX.DiffusionBackbone.multimodal_dpm_solver_plus import DPM_Solver as multimodal_DPM_Solver
+from scdiffusionX.DiffusionBackbone.dpm_solver_plus import DPM_Solver as singlemodal_DPM_Solver
 
 def main():
     args = create_argparser().parse_args()

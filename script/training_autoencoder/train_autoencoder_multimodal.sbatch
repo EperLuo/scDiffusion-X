@@ -23,5 +23,5 @@
 # Train autoencoder with joint latent space  
 python train_encoder.py dataset=openproblem training_config=default +dataset.encoder_type=learnt_autoencoder \
 dataset.dataset_path=/stor/lep/diffusion/multiome/openproblem_filtered.h5mu \
-training_config.chekpoint_path=/stor/lep/workspace/scMulDiffusion/script/training_autoencoder/outputs/checkpoints \
+training_config.chekpoint_path=/stor/lep/workspace/scDiffusion-X/script/training_autoencoder/outputs/checkpoints \
 encoder=encoder_multimodal encoder.is_binarized=True logger.project=my_autoencoder2 trainer.max_epochs=300

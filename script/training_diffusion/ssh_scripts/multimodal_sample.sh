@@ -11,7 +11,7 @@ DIFFUSION_FLAGS="--diffusion_steps 1000 --noise_schedule linear
 
 # Modify the following paths to your own paths
 MULTIMODAL_MODEL_PATH="/stor/lep/workspace/multi_diffusion/MM-Diffusion/outputs/checkpoints_cross/open_lr1e4_w512_scale124_drop0_80w_rescale10_3crossatt64_condi2/model800000.pt"
-OUT_DIR="/stor/lep/workspace/scMulDiffusion/script/training_diffusion/outputs/sample/my_sample"
+OUT_DIR="/stor/lep/workspace/scDiffusion-X/script/training_diffusion/outputs/sample/my_sample"
 DATA_DIR="/stor/lep/diffusion/multiome/openproblem_filtered.h5mu"
 
 NUM_GPUS=1

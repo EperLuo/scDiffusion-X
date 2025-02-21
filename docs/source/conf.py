@@ -8,7 +8,7 @@
 
 # import sphinx_rtd_theme
 
-project = 'scMulDiffusion'
+project = 'scDiffusion-X'
 copyright = '2025, Erpai Luo'
 author = 'Erpai Luo'
 release = 'v1.0'

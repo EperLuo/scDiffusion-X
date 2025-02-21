@@ -1,2 +1,2 @@
-Train scMulDiffusion
+Train scDiffusion-X
 =====================================================

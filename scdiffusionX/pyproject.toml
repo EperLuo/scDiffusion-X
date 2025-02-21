@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "scmuldiffusion"
-version = "0.0.2"
+name = "scdiffusionX"
+version = "0.0.1"
 authors = [
   { name="Erpai Luo", email="lep23@mails.tsinghua.edu.cn" },
 ]
-description = "scMulDiffusion: Diffusion Model for Single-Cell Multiome Data Generation and Analysis"
+description = "scDiffusion-X: Diffusion Model for Single-Cell Multiome Data Generation and Analysis"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -44,5 +44,5 @@ license = {file = "LICENSE"}
 license-files = ["LICEN[CS]E*"]
 
 [project.urls]
-Homepage = "https://github.com/EperLuo/scMulDiffusion"
-Issues = "https://github.com/EperLuo/scMulDiffusion/issues"
+Homepage = "https://github.com/EperLuo/scDiffusion-X"
+Issues = "https://github.com/EperLuo/scDiffusion-X/issues"

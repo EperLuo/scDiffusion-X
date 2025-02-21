@@ -12,13 +12,13 @@ DIFFUSION_FLAGS="--diffusion_steps 1000 --noise_schedule linear
 # Modify the following paths to your own paths
 MULTIMODAL_MODEL_PATH="/stor/lep/workspace/multi_diffusion/MM-Diffusion/outputs/checkpoints_ablation/babel_lr1e4_w640_scale124_drop0_80w_rescale10_3crossatt64_layernorm2/model800000.pt"
 AE_PATH="your/AE/path/checkpoints/last.ckpt"
-OUT_DIR="/stor/lep/workspace/scMulDiffusion/script/training_diffusion/outputs/sample/my_translation" 
+OUT_DIR="/stor/lep/workspace/scDiffusion-X/script/training_diffusion/outputs/sample/my_translation" 
 
 # translation config
 DATA_DIR="/stor/lep/data/BABEL/test.h5mu"  # the source data
 GEN_MODE="rna"     # the target modality
 CONDITION="leiden"  # the condition type to guide the generation
-encoder_config="/stor/lep/workspace/scMulDiffusion/script/training_autoencoder/configs/encoder/encoder_multimodal_large.yaml"    # the cfgen autoencoder config
+encoder_config="/stor/lep/workspace/scDiffusion-X/script/training_autoencoder/configs/encoder/encoder_multimodal_large.yaml"    # the cfgen autoencoder config
 gen_times="5"    # how many time you want to translate the whole data. usually translate more than once to remove noise.
 
 NUM_GPUS=1

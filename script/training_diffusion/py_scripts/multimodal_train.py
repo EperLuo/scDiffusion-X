@@ -4,17 +4,17 @@ Train a diffusion model on audio-video pairs.
 import sys,os
 sys.path.append(os.path.dirname (os.path.dirname (os.path.abspath (__file__))))
 import argparse
-from scmuldiffusion.DiffusionBackbone import dist_util, logger
-from scmuldiffusion.DiffusionBackbone.multimodal_datasets import load_data_cell
-from scmuldiffusion.DiffusionBackbone.resample import create_named_schedule_sampler
-from scmuldiffusion.DiffusionBackbone.multimodal_script_util import (
+from scdiffusionX.DiffusionBackbone import dist_util, logger
+from scdiffusionX.DiffusionBackbone.multimodal_datasets import load_data_cell
+from scdiffusionX.DiffusionBackbone.resample import create_named_schedule_sampler
+from scdiffusionX.DiffusionBackbone.multimodal_script_util import (
     model_and_diffusion_defaults,
     create_model_and_diffusion,
     args_to_dict,
     add_dict_to_argparser
 )
-from scmuldiffusion.DiffusionBackbone.multimodal_train_util import TrainLoop
-from scmuldiffusion.DiffusionBackbone.common import set_seed_logger_random
+from scdiffusionX.DiffusionBackbone.multimodal_train_util import TrainLoop
+from scdiffusionX.DiffusionBackbone.common import set_seed_logger_random
 import torch
 
 
