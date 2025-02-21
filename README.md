@@ -2,7 +2,7 @@
 
 Welcome! This is the official implement of scDiffusion-X. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
 
-Instruction (under construction): https://scdiffusionX.readthedocs.io/en/latest/
+Instruction (under construction): https://scdiffusionx.readthedocs.io/en/latest/
 
 <!-- ![image](FIG1.png) -->
 <div align="center">  
@@ -23,7 +23,7 @@ pip install -e .
 ```
 TODO: Pipy package construction -->
 ```
-conda create --name scmuldiff python=3.8
+conda create --name scdiffx python=3.8
 pip install -r requirements.txt
 pip install scdiffusionX
 conda install mpi4py
