@@ -28,8 +28,8 @@ from scdiffusionX.Autoencoder.models.base.encoder_model import EncoderModel
 
 def main():
     args = create_argparser().parse_args()
-    args.video_size = [int(i) for i in args.video_size.split(',')]
-    args.audio_size = [int(i) for i in args.audio_size.split(',')]
+    args.rna_dim = [int(i) for i in args.rna_dim.split(',')]
+    args.atac_dim = [int(i) for i in args.atac_dim.split(',')]
     
     dist_util.setup_dist(args.devices)
     logger.configure(args.output_dir)
@@ -55,7 +55,7 @@ def main():
     if os.path.exists(args.load_noise):
         sr_noise = np.load(args.load_noise)
         sr_noise = th.tensor(sr_noise).to(dist_util.dev()).unsqueeze(0)
-        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.video_size[0])
+        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.rna_dim[0])
         if dist.get_rank()==0:
             logger.log(f"load noise form {args.load_noise}...")
 
@@ -113,7 +113,7 @@ def main():
 
         target_gene=args.target_gene.split(',')    #'CD3E', 'CD3E,CD4', 'CD4', 'CTRL', 'NFKB2', 'ZAP70'
         target_index = np.where(np.in1d(mdata['rna'].var_names.values,target_gene)==1)[0]
-        selected_cell_types = ['CD4+ T naive','CD4+ T activated', 'CD8+ T', 'CD8+ T naive'] #['naive CD4 T cells', 'memory CD4 T cells']
+        selected_cell_types = args.target_type.split(',')
         # mdata['rna'][:, target_gene] = 0
         # mdata['rna'][mdata['rna'].obs['cell_type'].isin(selected_cell_types),target_gene] = 0
 
@@ -135,7 +135,8 @@ def main():
         # print(gt_rna[:, target_index])
 
         # if perturb
-        gt_rna[:, target_index] = 0 
+        if args.pert:
+            gt_rna[:, target_index] = 0 
 
         batch["X_norm"] = {'rna':gt_rna,'atac':gt_atac}
         z = encoder_model.encode(batch)
@@ -176,8 +177,8 @@ def main():
                 classes = th.tensor(classes, device=dist_util.dev(), dtype=th.int)
                 model_kwargs["label"] = classes
 
-            shape = {"video":(args.batch_size if i!=num_iteration-1 else x_T_init.shape[0], *args.video_size), \
-                    "audio":(args.batch_size if i!=num_iteration-1 else x_T_init.shape[0], *args.audio_size)
+            shape = {"video":(args.batch_size if i!=num_iteration-1 else x_T_init.shape[0], *args.rna_dim), \
+                    "audio":(args.batch_size if i!=num_iteration-1 else x_T_init.shape[0], *args.atac_dim)
                 }
             if args.sample_fn == 'dpm_solver':
                 # sample_fn = multimodal_dpm_solver
@@ -260,9 +261,9 @@ def main():
         # if os.path.exists(args.ref_path):
         #     for fake_path in [multimodal_save_path, sr_save_path]:
         #         # if fake_path == multimodal_save_path: 
-        #         #     video_size = args.video_size
+        #         #     rna_dim = args.rna_dim
         #         # elif fake_path == sr_save_path: 
-        #         #     video_size = [args.video_size[0], args.video_size[1], args.large_size, args.large_size]
+        #         #     rna_dim = [args.rna_dim[0], args.rna_dim[1], args.large_size, args.large_size]
                    
         #         metric=eval_multimodal(args.ref_path, multimodal_save_path, eval_num=args.all_save_num)
         #         if dist.get_rank() == 0:
@@ -298,9 +299,11 @@ def create_argparser():
         gen_mode='atac',
         num_class=33, #22 #14
         class_cond=True,
+        pert=True,
         encoder_config='encoder_multimodal',
         condition='leiden',
         target_gene='CD3E',
+        target_type='CD4+ T naive,CD4+ T activated,CD8+ T,CD8+ T naive',
         ae_path='/stor/lep/workspace/multi_diffusion/CFGen/project_folder/experiments/train_autoencoder_babel_multimodal/checkpoints/epoch_39.ckpt',
     )
    

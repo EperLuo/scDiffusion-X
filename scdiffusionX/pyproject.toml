@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "scdiffusionX"
-version = "0.0.1"
+version = "0.0.2"
 authors = [
   { name="Erpai Luo", email="lep23@mails.tsinghua.edu.cn" },
 ]

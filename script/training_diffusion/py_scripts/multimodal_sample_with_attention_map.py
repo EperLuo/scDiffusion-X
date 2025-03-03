@@ -29,8 +29,8 @@ from mm_diffusion.dpm_solver_plus import DPM_Solver as singlemodal_DPM_Solver
 
 def main():
     args = create_argparser().parse_args()
-    args.video_size = [int(i) for i in args.video_size.split(',')]
-    args.audio_size = [int(i) for i in args.audio_size.split(',')]
+    args.rna_dim = [int(i) for i in args.rna_dim.split(',')]
+    args.atac_dim = [int(i) for i in args.atac_dim.split(',')]
     
     
     dist_util.setup_dist(args.devices)
@@ -70,7 +70,7 @@ def main():
     if os.path.exists(args.load_noise):
         sr_noise = np.load(args.load_noise)
         sr_noise = th.tensor(sr_noise).to(dist_util.dev()).unsqueeze(0)
-        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.video_size[0])
+        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.rna_dim[0])
         if dist.get_rank()==0:
             logger.log(f"load noise form {args.load_noise}...")
 
@@ -121,8 +121,8 @@ def main():
                     classes = th.tensor(classes, device=dist_util.dev(), dtype=th.int)
                     model_kwargs["label"] = classes
 
-                shape = {"video":(args.batch_size , *args.video_size), \
-                        "audio":(args.batch_size , *args.audio_size)
+                shape = {"video":(args.batch_size , *args.rna_dim), \
+                        "audio":(args.batch_size , *args.atac_dim)
                     }
                 if args.sample_fn == 'dpm_solver':
                     # sample_fn = multimodal_dpm_solver
@@ -272,9 +272,9 @@ def main():
             # if os.path.exists(args.ref_path):
             #     for fake_path in [multimodal_save_path, sr_save_path]:
             #         # if fake_path == multimodal_save_path: 
-            #         #     video_size = args.video_size
+            #         #     rna_dim = args.rna_dim
             #         # elif fake_path == sr_save_path: 
-            #         #     video_size = [args.video_size[0], args.video_size[1], args.large_size, args.large_size]
+            #         #     rna_dim = [args.rna_dim[0], args.rna_dim[1], args.large_size, args.large_size]
                     
             #         metric=eval_multimodal(args.ref_path, multimodal_save_path, eval_num=args.all_save_num)
             #         if dist.get_rank() == 0:

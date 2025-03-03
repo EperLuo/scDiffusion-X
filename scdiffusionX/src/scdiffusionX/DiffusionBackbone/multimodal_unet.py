@@ -858,9 +858,9 @@ class CrossAttentionBlock(nn.Module):
         self.va_index=None
         self.av_index=None
  
-    def attention_index(self, audio_size, video_size, device):
-        f, h, w = video_size
-        l = audio_size
+    def attention_index(self, atac_dim, rna_dim, device):
+        f, h, w = rna_dim
+        l = atac_dim
         video_len = f * h * w
         audio_len_perf = int(l / f)
         if self.window_shift:
@@ -1094,8 +1094,8 @@ class MultimodalUNet(nn.Module):
     """
     The full coupled-UNet model with attention and timestep embedding.
 
-    :param video_size: the size of the video input.
-    :param audio_size: the size of the audio input.
+    :param rna_dim: the size of the video input.
+    :param atac_dim: the size of the audio input.
     :param model_channels: base channel count for the model.
     :param video_out_channels: channels in the output video.
     :param audio_out_channels: channels in the output audio.
@@ -1132,8 +1132,8 @@ class MultimodalUNet(nn.Module):
 
     def __init__(
         self,
-        video_size,
-        audio_size,
+        rna_dim,
+        atac_dim,
         model_channels,
        
         video_out_channels,
@@ -1160,8 +1160,8 @@ class MultimodalUNet(nn.Module):
         if num_heads_upsample == -1:
             num_heads_upsample = num_heads
 
-        self.video_size = video_size.copy()
-        self.audio_size = audio_size.copy()
+        self.rna_dim = rna_dim.copy()
+        self.atac_dim = atac_dim.copy()
         self.specific_type = specific_type
 
         self.model_channels = model_channels
@@ -1193,8 +1193,8 @@ class MultimodalUNet(nn.Module):
         
         self._feature_size = ch
         input_block_chans = [ch]
-        feature_dim = self.audio_size[-1]
-        self.input_blocks = nn.ModuleList([TimestepEmbedSequential(InitialBlock_cell( self.video_size[-1],  self.audio_size[-1], feature_dim=feature_dim, video_out_channels = ch, audio_out_channels=ch))])
+        feature_dim = self.atac_dim[-1]
+        self.input_blocks = nn.ModuleList([TimestepEmbedSequential(InitialBlock_cell( self.rna_dim[-1],  self.atac_dim[-1], feature_dim=feature_dim, video_out_channels = ch, audio_out_channels=ch))])
 
         len_audio_conv = 1
 
@@ -1243,7 +1243,7 @@ class MultimodalUNet(nn.Module):
                     use_checkpoint=use_checkpoint,
                     num_heads=num_heads,
                     num_head_channels=num_head_channels,
-                    local_window = self.video_size[0],
+                    local_window = self.rna_dim[0],
                     window_shift = False,
                     id=2,
                     specific_type=self.specific_type,
@@ -1437,8 +1437,8 @@ if __name__=='__main__':
 
     model_channels = 192
     emb_channels = 128
-    video_size= [16,3,64,64]
-    audio_size = [1, 25600]
+    rna_dim= [16,3,64,64]
+    atac_dim = [1, 25600]
     video_out_channels = 3
     audio_out_channels = 1
     num_heads = 2
@@ -1451,8 +1451,8 @@ if __name__=='__main__':
     lr=0.0001
     channel_mult=(1,2,3,4)
     model = MultimodalUNet(
-        video_size,
-        audio_size,
+        rna_dim,
+        atac_dim,
         model_channels,
         video_out_channels,
         audio_out_channels,

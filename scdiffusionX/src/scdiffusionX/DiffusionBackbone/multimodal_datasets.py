@@ -24,8 +24,8 @@ def load_data_cell(
     batch_size,
     data_dir,
     ae_path=None,
-    video_size=0,
-    audio_size=0,
+    rna_dim=0,
+    atac_dim=0,
     deterministic=False,
     random_flip=True,
     num_workers=0,
@@ -42,8 +42,8 @@ def load_data_cell(
    
     :param data_dir: a dataset directory.
     :param batch_size: the batch size of each returned pair.
-    :param video_size: the size to which video frames are resized.
-    :audio_size:the size to which audio are resized.
+    :param rna_dim: the size to which video frames are resized.
+    :atac_dim:the size to which audio are resized.
     :param deterministic: if True, yield results in a deterministic order.
     :param random_flip: if True, randomly flip the images for augmentation.
     """
@@ -88,8 +88,8 @@ def _list_video_files_recursively(data_dir):
 
 class MultimodalDataset_cell(Dataset):
     """
-    :param video_size: [F,3,H,W] the size to which video frames are resized.
-    :param audio_size: [C,L] the size to which audio are resampled.
+    :param rna_dim: [F,3,H,W] the size to which video frames are resized.
+    :param atac_dim: [C,L] the size to which audio are resampled.
     :param video_clips: the meta info package of video clips. 
     :param shard: GPU id, used for allocating videos to different GPUs.
     :param num_shards: GPU num, used for allocating videos to different GPUs.
@@ -194,8 +194,8 @@ if __name__=='__main__':
     dataset64=load_data(
     data_dir="/data6/rld/data/landscape/test",
     batch_size=batch_size,
-    video_size=[int(seconds*video_fps), 3, 64, 64],
-    audio_size=[1, int(seconds*audio_fps)],
+    rna_dim=[int(seconds*video_fps), 3, 64, 64],
+    atac_dim=[1, int(seconds*audio_fps)],
     frame_gap=1,
     random_flip=False,
     num_workers=0,

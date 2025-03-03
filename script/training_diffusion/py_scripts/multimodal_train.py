@@ -23,8 +23,8 @@ def load_training_data(args,dev="cuda:0"):
         data_dir=args.data_dir,
         ae_path=args.ae_path,
         batch_size=args.batch_size,
-        video_size=args.video_size,
-        audio_size=args.audio_size,
+        rna_dim=args.rna_dim,
+        atac_dim=args.atac_dim,
         num_workers=args.num_workers,
         condition=args.condition,
         encoder_config=args.encoder_config,
@@ -40,8 +40,8 @@ def load_training_data(args,dev="cuda:0"):
 
 def main():
     args = create_argparser().parse_args()
-    args.video_size = [int(i) for i in args.video_size.split(',')]
-    args.audio_size = [int(i) for i in args.audio_size.split(',')]
+    args.rna_dim = [int(i) for i in args.rna_dim.split(',')]
+    args.atac_dim = [int(i) for i in args.atac_dim.split(',')]
     logger.configure(args.output_dir)
     dist_util.setup_dist(args.devices)
    

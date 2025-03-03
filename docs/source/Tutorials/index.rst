@@ -6,13 +6,13 @@
 Tutorials
 ==========================================
 
-This tutorials including training the scDiffusion-X model and how to use the trained model to carry on downstream task.
+This tutorials including how to train the scDiffusion-X model and how to use the trained model to carry on downstream task.
 
 .. toctree::
    :maxdepth: 1
 
    README
-   training/index
-   sampling/index
-   translation/index
-   regulation/index
+   training/train
+   sampling/inference_multi_diff
+   translation/translation_multi_diff
+   regulation/regulatory_multi_diff

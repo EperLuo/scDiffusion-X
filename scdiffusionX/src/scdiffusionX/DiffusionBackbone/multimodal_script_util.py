@@ -30,8 +30,8 @@ def model_defaults():
     Defaults for multi-modal training.
     """
     res = dict(
-        video_size="16,3,64,64",
-        audio_size="1,25600",
+        rna_dim="16,3,64,64",
+        atac_dim="1,25600",
         num_channels=128,
         num_res_blocks=2,
         num_heads=4,
@@ -57,8 +57,8 @@ def model_and_diffusion_defaults():
     return res
 
 def create_model_and_diffusion(
-    video_size,
-    audio_size,
+    rna_dim,
+    atac_dim,
     learn_sigma,
     num_channels,
     num_res_blocks,
@@ -85,8 +85,8 @@ def create_model_and_diffusion(
     num_class=None,
 ):
     model = create_model(
-        video_size=video_size,
-        audio_size=audio_size,
+        rna_dim=rna_dim,
+        atac_dim=atac_dim,
         num_channels=num_channels,
         num_res_blocks=num_res_blocks,
         channel_mult=channel_mult,
@@ -120,8 +120,8 @@ def create_model_and_diffusion(
 
 
 def create_model(
-    video_size,
-    audio_size,
+    rna_dim,
+    atac_dim,
     num_channels,
     num_res_blocks,
     channel_mult="",
@@ -141,18 +141,18 @@ def create_model(
     num_class=None,
 ):
     
-    image_size = video_size[-1] 
+    image_size = rna_dim[-1] 
     channel_mult = (4, 2, 1)
 
     cross_attention_resolutions = [int(i) for i in cross_attention_resolutions.split(',')]
     cross_attention_windows = [int(i) for i in cross_attention_windows.split(',')]
 
     return MultimodalUNet(
-        video_size=video_size,
-        audio_size=audio_size,
+        rna_dim=rna_dim,
+        atac_dim=atac_dim,
         model_channels=num_channels,
-        video_out_channels=video_size[-1],
-        audio_out_channels=audio_size[-1],
+        video_out_channels=rna_dim[-1],
+        audio_out_channels=atac_dim[-1],
         num_res_blocks=num_res_blocks,
         cross_attention_resolutions=cross_attention_resolutions,
         cross_attention_windows=cross_attention_windows,

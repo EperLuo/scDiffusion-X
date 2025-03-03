@@ -24,8 +24,8 @@ from scdiffusionX.DiffusionBackbone.dpm_solver_plus import DPM_Solver as singlem
 
 def main():
     args = create_argparser().parse_args()
-    args.video_size = [int(i) for i in args.video_size.split(',')]
-    args.audio_size = [int(i) for i in args.audio_size.split(',')]
+    args.rna_dim = [int(i) for i in args.rna_dim.split(',')]
+    args.atac_dim = [int(i) for i in args.atac_dim.split(',')]
     
     
     dist_util.setup_dist(args.devices)
@@ -52,7 +52,7 @@ def main():
     if os.path.exists(args.load_noise):
         sr_noise = np.load(args.load_noise)
         sr_noise = th.tensor(sr_noise).to(dist_util.dev()).unsqueeze(0)
-        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.video_size[0])
+        sr_noise = repeat(sr_noise, 'b c h w -> (b repeat) c h w', repeat=args.batch_size * args.rna_dim[0])
         if dist.get_rank()==0:
             logger.log(f"load noise form {args.load_noise}...")
 
@@ -98,13 +98,16 @@ def main():
             model_kwargs = {}
 
             if args.class_cond:
-                classes = np.random.choice(classes_all, args.batch_size, replace=False)  # generated random cell type
-                # classes = th.ones(args.batch_size)*3   # generated certain cell type
+                if args.specific_type is None:
+                    classes = np.random.choice(classes_all, args.batch_size, replace=False)  # generated random cell type
+                else:
+                    print(f'generating {label_encoder.classes_[int(args.specific_type)]} cell')
+                    classes = th.ones(args.batch_size)*int(args.specific_type)   # generated certain cell type
                 classes = th.tensor(classes, device=dist_util.dev(), dtype=th.int)
                 model_kwargs["label"] = classes
 
-            shape = {"video":(args.batch_size , *args.video_size), \
-                    "audio":(args.batch_size , *args.audio_size)
+            shape = {"video":(args.batch_size , *args.rna_dim), \
+                    "audio":(args.batch_size , *args.atac_dim)
                 }
             if args.sample_fn == 'dpm_solver':
                 # sample_fn = multimodal_dpm_solver
@@ -193,6 +196,7 @@ def create_argparser():
         load_noise="",
         data_dir="",
         condition='cell_type',
+        specific_type=None,
     )
    
     defaults.update(model_and_diffusion_defaults())
