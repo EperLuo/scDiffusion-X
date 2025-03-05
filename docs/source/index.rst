@@ -17,7 +17,8 @@ Overview
 News
 -----
 - 01/12/2025: The initialization of this read the docs
-- 02/27/2025: We've put our paper in the Bioarvix: https://www.biorxiv.org/content/10.1101/2025.02.27.640020v1
+- 02/27/2025: We've put our paper in the Bioarvix: https://www.biorxiv.org/content/10.1101/2025.02.27.640020
+- 03/05/2025: We released a model pretrained on the miniatlas dataset (Wu J, et al. 2025). See Training scDiffusion-X for details.
 
 
 Contents

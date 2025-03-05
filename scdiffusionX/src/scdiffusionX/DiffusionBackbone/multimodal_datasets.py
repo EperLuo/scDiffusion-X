@@ -145,7 +145,7 @@ class MultimodalDataset_cell(Dataset):
         batch_num = int(adata_rna.shape[0]/bs)+1
         for i in range(batch_num):
             batch = {}
-            batch["X_norm"] = {'rna':torch.tensor(adata_rna[i*bs:(i+1)*bs].X.toarray()),'atac':torch.tensor(adata_atac[i*bs:(i+1)*bs].X.toarray())}
+            batch["X_norm"] = {'rna':torch.tensor(adata_rna[i*bs:(i+1)*bs].X.toarray(),dtype=encoder_model.dtype),'atac':torch.tensor(adata_atac[i*bs:(i+1)*bs].X.toarray(),dtype=encoder_model.dtype)}
             
             X = {mod: batch["X_norm"][mod].to(encoder_model.device) for mod in batch["X_norm"]}
             size_factor = {}

@@ -2,7 +2,7 @@
 
 Welcome! This is the official implement of scDiffusion-X. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
 
-Instruction (under construction): https://scdiffusionx.readthedocs.io. Paper (preprint): https://www.biorxiv.org/content/10.1101/2025.02.27.640020v1.
+Instruction (under construction): https://scdiffusionx.readthedocs.io. Paper (preprint): https://www.biorxiv.org/content/10.1101/2025.02.27.640020.
 
 <!-- ![image](FIG1.png) -->
 <div align="center">  
@@ -50,6 +50,8 @@ sh ssh_scripts/multimodal_train.sh
 Again, adjust the data path and output path to your own, and also change the ae_path&encoder_config to the autoencoder you tarined in step 1. When training with condition (like the cell type condition), set the `num_class` to the number of unique labels. The training is unconditional when the `num_class` is not set.
 
 TODO: Explain more about each attribution
+
+`We provide a model pretrained on the miniatlas dataset (Wu J, et al. EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment), see the Instruction (https://scdiffusionx.readthedocs.io) for details.`
 
 **Step3: Generate new data**
 
