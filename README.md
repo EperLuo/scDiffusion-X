@@ -32,6 +32,8 @@ conda install mpi4py
 
 # User guidance
 
+`Training data and model`: We provide a model pretrained on the miniatlas dataset (Wu J, et al. EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment) and the train dataset openproblem_filtered.h5mu, which can be downloaded from <a href="https://figshare.com/s/14610d6d67160366aba2" target="_blank">Figshare</a>. See the <a href="https://scdiffusionx.readthedocs.io" target="_blank">Instruction</a> for details of miniatlas model.
+
 **Step1: Train the Autoencoder**
 ```
 cd script/training_autoencoder
@@ -51,7 +53,6 @@ Again, adjust the data path and output path to your own, and also change the ae_
 
 TODO: Explain more about each attribution
 
-`We provide a model pretrained on the miniatlas dataset (Wu J, et al. EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment), see the Instruction (https://scdiffusionx.readthedocs.io) for details.`
 
 **Step3: Generate new data**
 
