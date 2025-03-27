@@ -5,7 +5,7 @@
 
 scDiffusion-X documentation
 ==========================================
-Welcome! This is the official documentation of scDiffusion-X.
+Welcome! This is the official documentation of scDiffusion-X. The code repository: `scdiffusion-X github <https://github.com/EperLuo/scDiffusion-X>`_
 
 Overview
 ---------
@@ -34,10 +34,6 @@ Contents
 
    Tutorials/index
 
-.. toctree::
-   :maxdepth: 1
-
-   API/index
 
 
 
