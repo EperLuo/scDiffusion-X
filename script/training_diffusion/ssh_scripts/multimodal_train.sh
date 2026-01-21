@@ -9,14 +9,14 @@ MODEL_FLAGS="--cross_attention_resolutions 2,4,8 --cross_attention_windows 1,4,8
 "
 
 # Modify --devices to your own GPU ID
-TRAIN_FLAGS="--lr 0.0001 --batch_size 64
---devices 6,7 --log_interval 100 --save_interval 200000 --use_db False --lr_anneal_steps=800000" 
+TRAIN_FLAGS="--lr 0.0001 --batch_size 128
+--devices 0 --log_interval 100 --save_interval 200000 --use_db False --lr_anneal_steps=800000" 
 DIFFUSION_FLAGS="--noise_schedule linear --diffusion_steps 1000 --sample_fn dpm_solver++" 
 
 # Modify the following pathes to your own paths
 DATA_DIR="/stor/lep/diffusion/multiome/openproblem_filtered.h5mu"
 OUTPUT_DIR="/stor/lep/workspace/scDiffusion-X/script/training_diffusion/outputs/checkpoints/my_dfbackbone"
-NUM_GPUS=2
+NUM_GPUS=1
 WORLD_SIZE=1
 NCCL_P2P_DISABLE=1
 
