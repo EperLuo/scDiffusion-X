@@ -2,7 +2,7 @@
 
 Welcome! This is the official implement of scDiffusion-X. It is a multi-modal latent diffusion model for single-cell multi-omics data generation.
 
-Instruction (under construction): https://scdiffusionx.readthedocs.io. Paper (preprint): https://www.biorxiv.org/content/10.1101/2025.02.27.640020.
+Instruction: https://scdiffusionx.readthedocs.io. Paper: [scDiffusion-X paper](https://www.nature.com/articles/s41467-026-71744-x).
 
 <!-- ![image](FIG1.png) -->
 <div align="center">  
